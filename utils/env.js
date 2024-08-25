@@ -3,13 +3,13 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 function loadEnv() {
-  const envFilePath = path.resolve(__dirname, "../.env");
+  const envFilePath = path.resolve(__dirname, "../.env.local");
   if (fs.existsSync(envFilePath)) {
     dotenv.config({ path: envFilePath });
   }
 }
 function updateEnv(key, value) {
-  const envFilePath = path.resolve(__dirname, "../.env");
+  const envFilePath = path.resolve(__dirname, "../.env.local");
 
   const envVariables = fs.existsSync(envFilePath)
     ? dotenv.parse(fs.readFileSync(envFilePath))
