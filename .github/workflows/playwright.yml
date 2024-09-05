@@ -26,6 +26,19 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
+      - name: Run Playwright UI Tests
+        run: |
+          yarn cucumber-js || exit 1
+          node ./htmlReport.js || exit 1
+
+      - name: Upload UI Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: UI Report
+          path: Reports/
+          retention-days: 30
+
       - name: Run Playwright API Tests
         run: yarn run api
 
@@ -34,16 +47,5 @@ jobs:
         if: always()
         with:
           name: API Report
-          path: Reports/
-          retention-days: 30
-
-      - name: Run Playwright UI Tests
-        run: yarn run ui
-
-      - name: Upload UI Test Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: UI Report
           path: Reports/
           retention-days: 30
