@@ -13,7 +13,7 @@ This is an assessment project on using Playwright for API testing, including dyn
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/ebbimola/symphony-assessment.git
+   git clone https://github.com/ebbimola/playright-api-test.git
    cd playwright-api-test
 
    pnpm install or yarn install
@@ -56,7 +56,7 @@ playwright-api-test/
 - API Test Run
   pnpm api or yarn api
 - Cucumber-UI Test Run
-  pnpm ui or yarn api
+  pnpm ui or yarn ui
 ```
 ## Utility Function For Dynamic Variable Management
 ```bash
@@ -119,19 +119,20 @@ module.exports = {
 
 ```bash
   Feature: SauceDemo Login and Assert Product Alphabetical Order
-  Note: Verify that the items are sorted by Name ( A -&gt; Z ).
+  Note: 
+  Verify that the items are sorted by Name ( A - Z )/(Z - A).
 
-    Scenario: Login successfully with valid credentials
-      Given I open the SauceDemo login page
-      When I login as "standard" user
-      Then I should be redirected to the products page
-      Then Verify item sorting in alphabetical order
+  Background: Login to SauceDemo
+    Given I open the SauceDemo login page
+    When I login as "standard" user
 
-    Scenario: Verify Reverse/Descending Order
-      Given I open the SauceDemo login page
-      When I login as "standard" user
-      Then I should be redirected to the products page
-      Then Verify item sorting in reverse alphabetical order
+  Scenario: Login successfully with valid credentials
+    Then I should be redirected to the products page
+    Then Verify item sorting in alphabetical order
+
+  Scenario: Verify Reverse/Descending Order
+    Then I should be redirected to the products page
+    Then Verify item sorting in reverse alphabetical order
     
   /**
   * Initialize and return a new page instance.
@@ -160,19 +161,24 @@ module.exports = {
 ```bash
       - name: Run Playwright API Tests
         run: pnpm api
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: API Report
-          path: Report/api_report.json
+          path: Report/
           retention-days: 30
 
       - name: Run Playwright UI Tests
-        run: pnpm ui
-      - uses: actions/upload-artifact@v4
+        run: |
+          yarn cucumber-js || exit 1
+          node ./htmlReport.js || exit 1
+
+      - name: Upload UI Test Report
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: UI Report
-          path: Reports/cucumber_report_*.html
+          path: Reports/
           retention-days: 30
 ```
