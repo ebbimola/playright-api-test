@@ -18,35 +18,26 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "pnpm"
+          cache: "yarn"
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v3
         with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            ~/.cache/yarn
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: pnpm install
+        run: yarn install
 
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
+        run: yarn playwright install --with-deps
 
       - name: Run Playwright API Tests
-        run: pnpm run api
+        run: yarn run api
 
       - name: Upload API Test Report
         uses: actions/upload-artifact@v4
@@ -57,7 +48,7 @@ jobs:
           retention-days: 30
 
       - name: Run Playwright UI Tests
-        run: pnpm run ui
+        run: yarn run ui
 
       - name: Upload UI Test Report
         uses: actions/upload-artifact@v4
