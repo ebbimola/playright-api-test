@@ -20,32 +20,35 @@ jobs:
           node-version: "18"
           cache: "pnpm"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "8"
+
       - name: Install dependencies
-        run: |
-          npm install -g pnpm
-          pnpm install
+        run: pnpm install
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
       - name: Run Playwright API Tests
-        run: pnpm api
+        run: pnpm run api
 
       - name: Upload API Test Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: API Report
-          path: Reports/*.json
+          path: Reports/
           retention-days: 30
 
       - name: Run Playwright UI Tests
-        run: pnpm ui
+        run: pnpm run ui
 
       - name: Upload UI Test Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: UI Report
-          path: Reports/*.html
+          path: Reports/
           retention-days: 30
