@@ -7,5 +7,4 @@ node_modules/
 /screenshots/
 /allure-results/
 /Reports/
-yarn.lock
 .DS_Store
