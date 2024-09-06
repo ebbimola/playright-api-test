@@ -182,3 +182,7 @@ module.exports = {
           path: Reports/
           retention-days: 30
 ```
+![github actions](assets/actions-pipe.png)(https://github.com/ebbimola/playright-api-test/actions/runs/10725237578/job/29742621135)
+
+## Sample Report
+![Cucumber Report](assets/sample-report.png)
