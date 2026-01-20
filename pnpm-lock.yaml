@@ -17,7 +17,7 @@ importers:
         version: 10.9.0
       '@cucumber/pretty-formatter':
         specifier: ^1.0.1
-        version: 1.0.1(@cucumber/cucumber@10.9.0)(@cucumber/messages@21.0.1)
+        version: 1.0.1(@cucumber/cucumber@10.9.0)(@cucumber/messages@24.1.0)
       '@playwright/test':
         specifier: ^1.46.1
         version: 1.46.1
@@ -321,8 +321,8 @@ packages:
       supports-color:
         optional: true
 
-  diff@4.0.2:
-    resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
+  diff@4.0.4:
+    resolution: {integrity: sha512-X07nttJQkwkfKfvTPG/KSnE2OMdcUCao6+eXF3wmnIQRn2aPAHH3VxDbDOdegkd6JbPsXqShpvEOHfAT+nCNwQ==}
     engines: {node: '>=0.3.1'}
 
   dotenv@16.4.5:
@@ -961,7 +961,7 @@ snapshots:
       '@cucumber/ci-environment': 9.1.0
       '@cucumber/cucumber-expressions': 16.1.1
       '@cucumber/gherkin': 26.0.3
-      '@cucumber/gherkin-streams': 5.0.1(@cucumber/gherkin@26.0.3)(@cucumber/message-streams@4.0.1(@cucumber/messages@21.0.1))(@cucumber/messages@21.0.1)
+      '@cucumber/gherkin-streams': 5.0.1(@cucumber/gherkin@26.0.3)(@cucumber/message-streams@4.0.1(@cucumber/messages@24.1.0))(@cucumber/messages@21.0.1)
       '@cucumber/gherkin-utils': 8.0.2
       '@cucumber/html-formatter': 20.2.1(@cucumber/messages@21.0.1)
       '@cucumber/message-streams': 4.0.1(@cucumber/messages@21.0.1)
@@ -999,7 +999,7 @@ snapshots:
       yaml: 2.5.1
       yup: 0.32.11
 
-  '@cucumber/gherkin-streams@5.0.1(@cucumber/gherkin@26.0.3)(@cucumber/message-streams@4.0.1(@cucumber/messages@21.0.1))(@cucumber/messages@21.0.1)':
+  '@cucumber/gherkin-streams@5.0.1(@cucumber/gherkin@26.0.3)(@cucumber/message-streams@4.0.1(@cucumber/messages@24.1.0))(@cucumber/messages@21.0.1)':
     dependencies:
       '@cucumber/gherkin': 26.0.3
       '@cucumber/message-streams': 4.0.1(@cucumber/messages@21.0.1)
@@ -1010,7 +1010,7 @@ snapshots:
   '@cucumber/gherkin-streams@5.0.1(@cucumber/gherkin@28.0.0)(@cucumber/message-streams@4.0.1(@cucumber/messages@24.1.0))(@cucumber/messages@24.1.0)':
     dependencies:
       '@cucumber/gherkin': 28.0.0
-      '@cucumber/message-streams': 4.0.1(@cucumber/messages@24.1.0)
+      '@cucumber/message-streams': 4.0.1(@cucumber/messages@21.0.1)
       '@cucumber/messages': 24.1.0
       commander: 9.1.0
       source-map-support: 0.5.21
@@ -1080,10 +1080,10 @@ snapshots:
       reflect-metadata: 0.2.1
       uuid: 9.0.1
 
-  '@cucumber/pretty-formatter@1.0.1(@cucumber/cucumber@10.9.0)(@cucumber/messages@21.0.1)':
+  '@cucumber/pretty-formatter@1.0.1(@cucumber/cucumber@10.9.0)(@cucumber/messages@24.1.0)':
     dependencies:
       '@cucumber/cucumber': 10.9.0
-      '@cucumber/messages': 21.0.1
+      '@cucumber/messages': 24.1.0
       ansi-styles: 5.2.0
       cli-table3: 0.6.5
       figures: 3.2.0
@@ -1165,7 +1165,7 @@ snapshots:
 
   assertion-error-formatter@3.0.0:
     dependencies:
-      diff: 4.0.2
+      diff: 4.0.4
       pad-right: 0.2.2
       repeat-string: 1.6.1
 
@@ -1266,7 +1266,7 @@ snapshots:
     optionalDependencies:
       supports-color: 8.1.1
 
-  diff@4.0.2: {}
+  diff@4.0.4: {}
 
   dotenv@16.4.5: {}
 
